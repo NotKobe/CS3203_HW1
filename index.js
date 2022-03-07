@@ -68,4 +68,11 @@ app.delete('/api/tweet/:id',(req,res)=>{
     res.send(tweets) //send tweets back with the delted vaule
 
 });
+
+function test_print(){
+
+    console.log("test code")
+
+} 
+
 app.listen(3000,()=> console.log("HOME PAGE"));
