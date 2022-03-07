@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Program Assignment1</title>
+  </head>
+  <body>
+      <!-- Button to show all tweets created at and text, just makes a simple get request-->
+    <h1>
+        Click button to show all tweets 
+    </h1>
+    <p>
+        (if not showing up properly check console.log with inspect)
+    </p>
+        <button type="submit" onclick="show_all_Tweeets()">
+        </button>
+    <script>
+            function show_all_Tweeets(){
+                fetch('http://localhost:3000/api/tweet/created_at&&text')
+                .then(response => response.json())
+                .then(data =>  $(".container_Tweets").after(JSON.stringify(data)));
+    }
+    </script>
+    <div class="container_Tweets">
+    </div>
+
+    <!-- Button to show all user ids, just makes a simple get request-->
+    <h1>
+        Click button to show all user IDs
+       
+    </h1>
+    <p> (if not showing up properly check console.log with inspect)</p>
+    <button type="submit" onclick="show_all_User_ID()">
+    </button>
+<script>
+        function show_all_User_ID(){
+            fetch('http://localhost:3000/api/tweet/user_IDs')
+            .then(response => response.json())
+            .then(data => $(".container_ID").after(JSON.stringify(data)));
+            }
+</script>
+
+</script>
+<div class="container_ID">
+</div>
+    
+    <h1>
+        Show tweet details given tweet ID
+    </h1>
+    <form>
+        <label for="TweetID">Tweet ID:</label><br>
+        <input type="text" id="TweetID" name="TweetID"><br>
+        <input type="submit" value="Submit" onclick="show_tweet_details()">
+    </form>
+
+      <script>
+        function show_tweet_details(){
+            fetch('http://localhost:3000/api/tweet/:id')
+            .then(response => response.json())
+            .then(data =>  $(".container_tweet_detail").after(JSON.stringify(data)));
+            }
+</script>
+
+<div class="container_tweet_detail">
+</div>
+
+    <h1>Create a Tweet</h1>
+    <form>
+        <label for="TweetID">Tweet ID:</label><br>
+        <input type="text" id="TweetID" name="TweetID"><br>
+        <label for="Text">Text:</label><br>
+        <input type="text" id="Text" name="Text"><br>
+        <input type="submit" value="Submit" onclick="createTweet()">
+      </form>
+
+      <script>
+        function createTweet(){
+            fetch('http://localhost:3000/api/tweet/:id')
+            .then(response => response.json())
+            .then(data => console.log(data));
+            }
+</script>
+
+<h1>Update Screen_name</h1>
+    <form>
+        <label for="name">Name:</label><br>
+        <input type="text" id="Name" name="Name"><br>
+        <label for="Text">New Screen_name:</label><br>
+        <input type="text" id="Text" name="Text"><br>
+        <input type="submit" value="Submit" onclick="createTweet()">
+      </form>
+
+      <script>
+        function createTweet(){
+            fetch('http://localhost:3000/api/tweet/:id')
+            .then(response => response.json())
+            .then(data => console.log(data));
+            }
+</script>
+
+<h1>Delete a Tweet</h1>
+    <form>
+        <label for="TweetID">Tweet ID:</label><br>
+        <input type="text" id="TweetID" name="TweetID"><br>
+        <input type="submit" value="Submit" onclick="deleteTweet()">
+      </form>
+
+      <script>
+        function deleteTweet(){
+            fetch('http://localhost:3000/api/tweet/:id')
+            .then(response => response.json())
+            .then(data => console.log(data));
+            }
+</script>
+
+
+
+  </body>
+  
+</html>
